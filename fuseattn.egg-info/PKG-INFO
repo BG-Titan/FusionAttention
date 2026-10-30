@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: fuseattn
+Version: 0.1.0
+Summary: CUDA-core FA2 paged attention backend for vLLM (Pascal sm_61, no Tensor Cores)
+License: Apache-2.0
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+
+# FuseAttn
+
+CUDA-core FA2 paged attention backend for vLLM v1 — runs on Pascal sm_60/61 where
+Tensor-Core backends (FA2/FlashInfer/TRT-LLM sm_75+) and Triton (sm_70+) do not.
+
+Build: `python setup.py build_py` (plain nvcc, no torch headers), then install
+this directory; plugin auto-registers `--attention-backend FUSE_ATTN` via the
+`vllm.general_plugins` entry point. Design + tests: see docs (WIP).
